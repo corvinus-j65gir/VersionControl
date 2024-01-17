@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -73,6 +74,20 @@ namespace week07
                                       select x)
                                         .ToList();
             MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+            using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+            {
+                sw.WriteLine("  Időszak Nyereség");
+                for (int i = 0; i < nyereségekRendezve.Count; i++)
+                {
+                    sw.WriteLine(i + " " + kezdőDátum + "-" + záróDátum + " " + nyereségekRendezve[i]);
+                }
+            }
         }
     }
 }
