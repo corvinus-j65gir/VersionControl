@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserMaintence.Entities;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UserMaintence
 {
@@ -30,6 +32,12 @@ namespace UserMaintence
                 FullName = txtFullName.Text,
             };
             users.Add(u);
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            
         }
     }
 }
