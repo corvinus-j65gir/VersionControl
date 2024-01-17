@@ -21,6 +21,9 @@ namespace week05
         public Form1()
         {
             InitializeComponent();
+            comboBox1.DataSource = Currencies;
+            GetCurrencies();
+            RefreshData();
         }
 
         private void GetExchangeRates()
@@ -100,6 +103,25 @@ namespace week05
         {
             RefreshData();
         }
-    }
 
+        private void GetCurrencies()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetCurrenciesRequestBody();
+            var response = mnbService.GetCurrencies(request);
+            var currencies = response.GetCurrenciesResult;
+        }
+
+        private void XML2()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml(currencies);
+
+            foreach (XmlElement element in xml.DocumentElement.ChildNodes[0])
+            {
+                var currency = element.InnerText;
+                Currencies.Add(currency);
+            }
+        }
+    }
 }
