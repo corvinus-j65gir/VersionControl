@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserMaintence.Entities;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UserMaintence
 {
@@ -19,8 +21,7 @@ namespace UserMaintence
         public Form1()
         {
             InitializeComponent();
-            lblLastName.Text = Resource1.LastName; // label1
-            lblFirstName.Text = Resource1.FirstName; // label2
+            lblFullName.Text = Resource1.FullName; // label1
             btnAdd.Text = Resource1.Add; // button1
         }
 
@@ -28,10 +29,15 @@ namespace UserMaintence
         {
             var u = new User()
             {
-                LastName = txtLastName.Text,
-                FirstName = txtFirstName.Text
+                FullName = txtFullName.Text,
             };
             users.Add(u);
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            
         }
     }
 }
