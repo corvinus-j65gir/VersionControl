@@ -69,7 +69,10 @@ namespace week06
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Factory = new Abstractions.BallFactory();
+            Factory = new entities.BallFactory
+            {
+                BallColor = button2.BackColor
+            };
         }
 
         private void DisplayNext()
